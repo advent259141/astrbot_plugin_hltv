@@ -5,12 +5,19 @@
 
 # 使用前置
 使用该插件需要在astrbot控制台安装一些额外的库
+
 beautifulsoup4
+
 playwrigh
+
 tpillow
+
 python-utils
+
 cloudscraper
+
 tzlocal
+
 lxml
 
 在这些库安装完成后打开cmd，输入
