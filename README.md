@@ -6,13 +6,13 @@
 # 使用前置
 使用该插件需要在astrbot控制台安装一些额外的库
 
-pip install beautifulsoup4
-pip install playwright
-pip install pillow
-pip install python-utils
-pip install cloudscraper
-pip install tzlocal
-pip install lxml
+beautifulsoup4
+playwright
+pillow
+python-utils
+cloudscraper
+tzlocal
+lxml
 
 在这些库安装完成后打开cmd，输入
 
