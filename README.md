@@ -5,10 +5,9 @@
 
 # 使用前置
 使用该插件需要在astrbot控制台安装一些额外的库
-
 beautifulsoup4
-playwright
-pillow
+playwrigh
+tpillow
 python-utils
 cloudscraper
 tzlocal
