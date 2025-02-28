@@ -1,8 +1,8 @@
-# helloworld
+# 基于HLTV的cs数据查询插件
 
 AstrBot 插件模板
 
-A template plugin for AstrBot plugin feature
+这是一个利用playwright实现的基于HLTV.org网站数据的cs赛事数据查询插件
 
 # 支持
 
