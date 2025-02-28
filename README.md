@@ -8,9 +8,9 @@
 
 beautifulsoup4
 
-playwrigh
+playwright
 
-tpillow
+pillow
 
 python-utils
 
