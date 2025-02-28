@@ -1,3 +1,12 @@
+
+</div>
+
+<div align="center">
+
+![:name](https://count.getloli.com/@moreapi?name=moreapi&theme=capoo-2&padding=10&offset=0&align=center&scale=1&pixelated=1&darkmode=auto)
+
+</div>
+
 # 基于HLTV的cs数据查询插件
 
 这是一个利用playwright实现的基于HLTV.org网站数据的cs赛事数据查询插件
