@@ -94,7 +94,7 @@ class HLTVQuery(Star):
             },
             "搜索选手": {
                 "command": "/搜索选手 [选手名称]",
-                "desc": "搜索选手,显示前5个匹配结果\n在30秒内输入序号(1-5)可查看选手详细数据",
+                "desc": "搜索选手,显示前5个匹配结果\n在30秒内输入选手1-5可查看选手详细数据",
                 "usage": "/搜索选手 ZywOo",
                 "category": "选手"
             },
@@ -357,7 +357,7 @@ class HLTVQuery(Star):
             },
             "比赛结果": {
                 "command": "/比赛结果",
-                "desc": "查询HLTV近期比赛结果(10场)\n在30秒内输入字母(a-e)可查看详细数据",
+                "desc": "查询HLTV近期比赛结果(10场)\n在30秒内输入比赛a-e可查看详细数据",
                 "usage": "/比赛结果"
             }
         }
@@ -370,7 +370,7 @@ class HLTVQuery(Star):
             },
             "搜索选手": {
                 "command": "/搜索选手 [选手名称]",
-                "desc": "搜索选手,显示前5个匹配结果\n在30秒内输入序号(1-5)可查看选手详细数据",
+                "desc": "搜索选手,显示前5个匹配结果\n在30秒内输入选手1-5可查看选手详细数据",
                 "usage": "/搜索选手 ZywOo"
             }
         }
@@ -897,7 +897,7 @@ class HLTVQuery(Star):
                     result_text += f"🏆 赛事: {event_name}\n"
                     result_text += "─" * 20 + "\n"
             
-            result_text += "\n💡 在30秒内输入字母(a-e)可查看详细数据"
+            result_text += "\n💡 在30秒内输入比赛 a-e 可查看详细数据"
             
             # 记录查询时间和用户ID
             user_id = event.get_session_id()
@@ -993,7 +993,7 @@ class HLTVQuery(Star):
             if len(players) > 5:
                 result += f"\n💡 找到更多结果，只显示前5个匹配项"
                 
-            result += "\n📌 在30秒内输入序号(1-5)可查看选手详细数据"
+            result += "\n📌 在30秒内输入选手 1-5可查看选手详细数据"
                 
             yield event.plain_result(result)
             
@@ -1001,7 +1001,7 @@ class HLTVQuery(Star):
             self.logger.error(f"搜索选手失败: {str(e)}")
             yield event.plain_result("❌ 搜索选手失败，请稍后重试")
 
-    @filter.regex(r"^[1-5]$")
+    @filter.regex(r"^选手\s*[1-5]$")
     async def handle_player_stats(self, event: AstrMessageEvent):
         """处理选手详细统计信息查询"""
         try:
@@ -1022,7 +1022,9 @@ class HLTVQuery(Star):
             if not messages:
                 return
             
-            selected_index = int(messages[0].text.strip()) - 1
+            # 从"选手 X"格式中提取数字
+            selected_number = int(messages[0].text.strip().split()[-1])
+            selected_index = selected_number - 1
             selected_player = self.player_search_results[user_id][selected_index]
             
             # 使用nickname替代name
@@ -1278,7 +1280,7 @@ class HLTVQuery(Star):
             self.logger.error(f"查询选手详细信息失败: {str(e)}")
             yield event.plain_result("❌ 查询选手详细信息失败，请稍后重试")
 
-    @filter.regex(r"^[a-e]$")  # 保持原有的a-e匹配
+    @filter.regex(r"^比赛\s*[a-e]$")  # 更新为新的匹配格式
     async def handle_match_details(self, event: AstrMessageEvent):
         """处理比赛详细信息查询"""
         try:
@@ -1286,7 +1288,8 @@ class HLTVQuery(Star):
             current_time = time.time()
             
             # 获取用户输入的字母
-            selected_letter = event.get_messages()[0].text.strip().lower()
+            # 从"比赛 X"格式中提取字母
+            selected_letter = event.get_messages()[0].text.strip().split()[-1].lower()
             
             # 检查是否在30秒内发起的比赛结果查询
             if user_id not in self.last_result_query or \
