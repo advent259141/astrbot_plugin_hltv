@@ -3,7 +3,7 @@
 
 <div align="center">
 
-![:name]([https://count.getloli.com/@hltv?name=hltv&theme=asoul&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto](https://count.getloli.com/@Jason.Joestar-NIUNIU?name=Jason.Joestar-NIUNIU&theme=asoul&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto))
+![:name](https://count.getloli.com/@Jason.Joestar-NIUNIU?name=Jason.Joestar-NIUNIU&theme=asoul&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
 
 </div>
 
